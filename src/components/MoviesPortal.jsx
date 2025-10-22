@@ -24,6 +24,7 @@ const MoviesPortal = () => {
         </form>
       </div>
     </div>
+    {enteredSearchText}
     </>
   );
 };
