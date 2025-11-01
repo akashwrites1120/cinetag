@@ -1,6 +1,6 @@
 import React from "react";
 
-const ErrorAlert = () => {
+const ErrorAlert = ({error, searchTerm}) => {
   return (
       <div class="alert alert-dismissible alert-danger">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
