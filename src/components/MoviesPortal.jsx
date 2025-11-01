@@ -1,12 +1,16 @@
 import { useState } from "react";
+import FetchMovies from "../api/FetchMovies";
 
 
 const MoviesPortal = () => {
     const [searchInputText, setSearchInputText] = useState('')
     const [enteredSearchText, setEnteredSearchText] = useState('')
+    const [movies, setMovies] = useState([])
+    const [error, setError] = useState(null)
 
     const onSerchTextEnter = (e)=>{
         e.preventDefault()
+        FetchMovies(searchInputText, setMovies, setError)
         setEnteredSearchText(enteredSearchText)
     }
   return (
