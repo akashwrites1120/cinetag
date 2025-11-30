@@ -1,27 +1,106 @@
-import React from 'react'
+import React from "react";
 
-const MovieDetails = ({movie}) => {
+const MovieDetails = ({ movie }) => {
   return (
-        <>
-            <div className="row">
-                <div className="col-md-2">
-                    <img src={movie.Poster} alt={movie.Title} width='100%' />
-                </div>
-                <div className='col-md-10'>
-                    <div className="card">
-                        <div className="card-body">
-                            <h3 className="card-title">{movie.Title}</h3>
-                            <h6 className="card-subtitle mb-2 text-muted">{movie.Released}</h6>
-                            <p className="card-text">{movie.Plot}</p>
-                            <a href={`https://www.imdb.com/title/${movie.imdbID}`} target="_blank" className="card-link">IMDB</a>
-                            <a href={`https://www.youtube.com/results?search_query=${movie.Title} trailer`} target="_blank" className="card-link">Watch Trailer</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br />
-        </>
-    );
-}
+    <div
+      className="animate-fade-in"
+      style={{
+        backgroundColor: "var(--surface-color)",
+        borderRadius: "var(--radius)",
+        overflow: "hidden",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        boxShadow: "var(--shadow)",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        cursor: "pointer",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-5px)";
+        e.currentTarget.style.boxShadow = "var(--shadow-lg)";
+        e.currentTarget.style.backgroundColor = "var(--surface-hover)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "var(--shadow)";
+        e.currentTarget.style.backgroundColor = "var(--surface-color)";
+      }}
+    >
+      <div
+        style={{ position: "relative", paddingTop: "150%", overflow: "hidden" }}
+      >
+        <img
+          src={
+            movie.Poster !== "N/A"
+              ? movie.Poster
+              : "https://via.placeholder.com/300x450?text=No+Poster"
+          }
+          alt={movie.Title}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          padding: "1.5rem",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h3
+          style={{
+            fontSize: "1.1rem",
+            marginBottom: "0.5rem",
+            lineHeight: "1.4",
+          }}
+        >
+          {movie.Title}
+        </h3>
+        <p
+          style={{
+            color: "var(--text-secondary)",
+            fontSize: "0.9rem",
+            marginBottom: "1rem",
+          }}
+        >
+          {movie.Year}
+        </p>
 
-export default MovieDetails
+        <div
+          style={{
+            marginTop: "auto",
+            display: "flex",
+            gap: "1rem",
+            fontSize: "0.9rem",
+          }}
+        >
+          <a
+            href={`https://www.imdb.com/title/${movie.imdbID}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontWeight: "500" }}
+          >
+            IMDB
+          </a>
+          <a
+            href={`https://www.youtube.com/results?search_query=${movie.Title} trailer`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontWeight: "500" }}
+          >
+            Trailer
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MovieDetails;
