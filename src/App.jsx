@@ -24,7 +24,17 @@ const App = () => {
           marginTop: "auto",
         }}
       >
-        <p>&copy; {new Date().getFullYear()} CineTag. All rights reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} CineTag.{" "}
+          <a
+            href="https://github.com/akashwrites1120/cinetag"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--primary-color)", textDecoration: "none" }}
+          >
+            Github
+          </a>
+        </p>
       </footer>
     </div>
   );
